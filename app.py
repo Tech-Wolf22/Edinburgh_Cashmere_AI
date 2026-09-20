@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 
 # Page config
 st.set_page_config(
@@ -11,7 +10,7 @@ st.set_page_config(
 
 # Title and intro
 st.title("🧣 Edinburgh Cashmere Recommendation Engine")
-st.markdown("**Prototype: Product Recommendation System**")
+st.markdown("**Prototype: Transparent, rule-based product recommendation system**")
 st.markdown("---")
 
 # Intro section
@@ -19,7 +18,7 @@ with st.container():
     col1, col2 = st.columns([2, 1])
     with col1:
         st.markdown("""
-        This is a working prototype of an AI recommendation engine for Edinburgh Cashmere.
+        This is a working prototype of a rule-based product recommendation engine for Edinburgh Cashmere.
         
         **What this demo shows:**
         - Select any product from the catalogue
@@ -29,7 +28,7 @@ with st.container():
         """)
     with col2:
         st.info("ℹ️ **Prototype Status**\n\nThis uses a rule-based approach to demonstrate recommendations. "
-                "A production system would incorporate machine learning with real customer data.")
+                "A production system could evaluate machine-learning methods using validated customer data.")
 
 st.markdown("---")
 
@@ -170,7 +169,7 @@ for i, rec in enumerate(recommendations, 1):
         with col4:
             st.metric("Rating", f"⭐ {rec['rating']}")
         with col5:
-            st.metric("Match Score", f"{rec['score']}/115")
+            st.metric("Match Score", f"{rec['score']} points")
         
         st.markdown("**Why this recommendation:**")
         for reason in rec['reasons']:
@@ -212,12 +211,12 @@ with tab2:
     | Similar price (±£30) | +30 | Customers often browse similar price ranges |
     | High rating (≥4.0) | +20 | Quality signal |
     | Complementary category | +25 | Cross-selling opportunity |
-    | **Maximum Score** | **115** | - |
+    | **Scoring range** | **Point-based** | Not a probability or accuracy percentage |
     
     **Why this approach?**
     - Interpretable: You can audit every recommendation
     - Fast: No model training required
-    - Reliable: Works with any product catalogue
+    - Adaptable: Can be configured for a product catalogue
     """)
 
 with tab3:
@@ -245,7 +244,7 @@ with tab3:
        - Customer satisfaction
     
     **Timeline:** This prototype demonstrates the feasibility. A production system 
-    would require 4-6 weeks of development with access to your real customer data.
+    would require a scoped feasibility assessment; the timeline depends on data access, integration needs and testing.
     """)
 
 # Evaluation metrics section
@@ -255,15 +254,15 @@ st.markdown("## 📊 Evaluation & Measurement")
 st.info("""
 **How would we measure success in production?**
 
-Rather than predict revenue impacts, we measure what actually happens:
+Rather than present unvalidated revenue projections, we would measure:
 
 - **Engagement:** Do customers click on recommendations?
 - **Conversion:** Do recommended products get purchased?
 - **Order Value:** Do recommendations increase basket size?
 - **Retention:** Do recommendations improve repeat purchases?
 
-These metrics are evaluated through A/B testing with real customers after launch.
-Financial impact is calculated from actual business results, not projections.
+These measures should be assessed against a baseline through controlled testing.
+Financial impact should be calculated from actual business results.
 """)
 
 # Technical notes
